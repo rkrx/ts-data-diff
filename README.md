@@ -32,8 +32,10 @@ dr.addDestinationRow({id: '2000', name: 'Product 2', price: 999.00, stock: 101})
 dr.addDestinationRow({id: '4000', name: 'Product 3', price: 150.00, stock: 1});
 
 // Output the differences
-for(const entry of dr.receiveAll(Type.Missing, Type.New, Type.Changed)) {
-    console.log(`${entry}`);
+for(const row of dr.receiveAll(Type.Missing, Type.New, Type.Changed)) {
+    console.log(`${row}`);
+    // row.entry <-- New, Changed, Unchanged: New data; Missing: Previous data
+    // row.entry.id <-- The id of the row
 }
 
 // Missing "id": "4000", "name": "Product 3", "price": 150, "stock": 1
